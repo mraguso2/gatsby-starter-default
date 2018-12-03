@@ -717,7 +717,9 @@ pre tt:after {
   }
 }
 
-/* add for now - will update */
+/************
+  Temp Styles for now for cassies page
+ */
 
 .inner {
   margin: 10px 30px;
@@ -738,7 +740,7 @@ input.numEntry {
   font-size: 1.1rem;
 }
 
-input[type=submit] {
+button[type=submit] {
   -webkit-appearance: none;
   -moz-appearance: none;
   width: 250px;
@@ -752,11 +754,16 @@ input[type=submit] {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-input[type=submit]:hover {
+button[type=submit]:hover {
   /* border-bottom: 2px solid hsl(261.5,92.3%,60%); */
   background-color: hsl(261.5, 92.3%, 60%);
   color: hsl(261.5, 92.3%, 98%);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 #calculated {
@@ -764,7 +771,7 @@ input[type=submit]:hover {
   line-height: 1.5;
   margin-top: 20px;
   width: 200px;
-  height: 50px;
+  /* height: 50px; */
   padding: 5px;
   position: relative;
   left: -200%;
@@ -784,4 +791,5 @@ input[type=submit]:hover {
 
 #calculated p {
   padding-left: 20px;
+  margin-bottom: 0rem;
 }
