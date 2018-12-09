@@ -33,7 +33,7 @@ class SecondPage extends React.Component {
   }
 
   testVar = async () => {
-    const person = await fetch(`https://api.github.com/users/${process.env.GHNAME}`).then(r => r.json());
+    const person = await fetch(`https://api.github.com/users/${process.env.GATSBY_NAME}`).then(r => r.json());
     console.log(person);
   }
 
