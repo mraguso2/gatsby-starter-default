@@ -32,6 +32,11 @@ class SecondPage extends React.Component {
     this.setState({hide: true});
   }
 
+  testVar = async () => {
+    const person = await fetch(`https://api.github.com/users/${process.env.GHNAME}`).then(r => r.json());
+    console.log(person);
+  }
+
   render() {
     const value = <p>{this.state.total}</p>
 
@@ -55,6 +60,7 @@ class SecondPage extends React.Component {
         <div className={this.state.hide ? '' : "display"} id="calculated">
           {value}
         </div>
+        <button onClick={this.testVar}>Oh Boy</button>
       </div>
     </Layout>
     )
