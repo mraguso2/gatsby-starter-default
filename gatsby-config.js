@@ -1,6 +1,11 @@
+require("dotenv").config({
+  path: `variables.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Mike Raguso',
+    GHNAME: process.env.GHNAME
   },
   plugins: [
     'gatsby-plugin-react-helmet',
