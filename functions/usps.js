@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 export async function handler(event, context) {
   try {
     console.log({env: process.env.GHNAME})
-    const response = await fetch(`https://api.github.com/users/mraguso2`);
+    const response = await fetch(`https://api.github.com/users/${process.env.GHNAME}`);
     if (!response.ok) {
       // NOT res.status >= 200 && res.status < 300
       return { statusCode: response.status, body: response.statusText };
@@ -11,8 +11,7 @@ export async function handler(event, context) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ login: data.login, url: data.url }),
-      data
+      body: JSON.stringify({ login: data.login, url: data.url })
     };
   } catch (err) {
     console.log(err); // output to netlify function log
