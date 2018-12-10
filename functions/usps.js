@@ -25,7 +25,7 @@ export async function handler(event, context) {
 
     const promiseParseString = promisify(parseString);
 
-    const result = await promiseParseString(responseXML).then(data => JSON.stringify(data));
+    const result = await promiseParseString(responseXML).then(data => JSON.stringify(data)).catch(err => {throw new Error({msg: err.message})});
 
     return {
       statusCode: 200,
