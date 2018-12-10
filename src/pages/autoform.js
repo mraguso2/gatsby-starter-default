@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import {fetch as fetchPolyfill} from 'whatwg-fetch';
+// import {fetch as fetchPolyfill} from 'whatwg-fetch';
 
 import Layout from '../components/layout'
 
@@ -27,7 +27,9 @@ class Autoform extends React.Component {
   getCityAndState = async (zip) => {
     let details;
     if (!window.fetch) {
-      details = await fetchPolyfill(`/.netlify/functions/usps?zipcode=${zip}`).then(res => res.json()).then(data => data).catch(err => { throw new Error(err.message)});
+      alert('currently does not work on this browser');
+      return;
+      // details = await fetchPolyfill(`/.netlify/functions/usps?zipcode=${zip}`).then(res => res.json()).then(data => data).catch(err => { throw new Error(err.message)});
     }
     else {
       details = await fetch(`/.netlify/functions/usps?zipcode=${zip}`).then(res => res.json()).then(data => data).catch(err => { throw new Error(err.message)});
