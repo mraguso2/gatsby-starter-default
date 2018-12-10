@@ -1,17 +1,35 @@
 import fetch from 'node-fetch';
+const parseString = require('xml2js').parseString;
+const {promisify} = require('es6-promisify');
+
 export async function handler(event, context) {
   try {
-    console.log({env: process.env.GHNAME})
-    const response = await fetch(`https://api.github.com/users/${process.env.GHNAME}`);
+    const zipcodeInput = event.queryStringParameters.zipcode
+
+    if (!zipcodeInput) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ msg: "No ZipCode" })
+      }
+    }
+
+    const xml = `<CityStateLookupRequest USERID=${process.env.USPS_USERNAME}> <ZipCode ID="0"> <Zip5>${zipcodeInput}</Zip5></ZipCode></CityStateLookupRequest>`;
+    const response = await fetch(`https://secure.shippingapis.com/ShippingAPI.dll?API=CityStateLookup&XML=${xml}`);
+
     if (!response.ok) {
       // NOT res.status >= 200 && res.status < 300
       return { statusCode: response.status, body: response.statusText };
     }
-    const data = await response.json();
+
+    const responseXML = await response.text();
+
+    const promiseParseString = promisify(parseString);
+
+    const result = await promiseParseString(responseXML).then(data => JSON.stringify(data));
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ login: data.login, url: data.url })
+      body: result
     };
   } catch (err) {
     console.log(err); // output to netlify function log

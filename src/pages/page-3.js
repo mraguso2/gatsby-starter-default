@@ -32,12 +32,6 @@ class SecondPage extends React.Component {
     this.setState({hide: true});
   }
 
-  testVar = async () => {
-    const person = await fetch(`/.netlify/functions/usps`).then(res => res.json()).then(data => data);
-    console.log(person);
-    console.log(process.env.GHNAME);
-  }
-
   render() {
     const value = <p>{this.state.total}</p>
 
