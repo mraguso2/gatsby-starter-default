@@ -13,7 +13,7 @@ export async function handler(event, context) {
       }
     }
 
-    const xml = `<CityStateLookupRequest USERID=${process.env.USPS_USERNAME}> <ZipCode ID="0"> <Zip5>${zipcodeInput}</Zip5></ZipCode></CityStateLookupRequest>`;
+    const xml = `<CityStateLookupRequest USERID="${process.env.USPS_USERNAME}"> <ZipCode ID="0"> <Zip5>${zipcodeInput}</Zip5></ZipCode></CityStateLookupRequest>`;
     const response = await fetch(`https://secure.shippingapis.com/ShippingAPI.dll?API=CityStateLookup&XML=${xml}`);
 
     if (!response.ok) {
