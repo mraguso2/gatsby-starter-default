@@ -33,8 +33,9 @@ class SecondPage extends React.Component {
   }
 
   testVar = async () => {
-    const person = await fetch(`https://api.github.com/users/${process.env.GHNAME}`).then(r => r.json());
+    const person = await fetch(`/.netlify/functions/usps`).then(res => res.json()).then(data => data);
     console.log(person);
+    console.log(process.env.GHNAME);
   }
 
   render() {
