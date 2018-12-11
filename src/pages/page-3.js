@@ -55,7 +55,6 @@ class SecondPage extends React.Component {
         <div className={this.state.hide ? '' : "display"} id="calculated">
           {value}
         </div>
-        <button onClick={this.testVar}>Oh Boy</button>
       </div>
     </Layout>
     )
