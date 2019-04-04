@@ -4,19 +4,12 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Image from '../components/image'
 
+import Icon from "../images/under-construction.svg";
+
 const IndexPage = () => (
-  <Layout>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-    <br/>
-    <Link to="/page-3/">Cassie Go Here</Link>
-    <br/>
-    <Link to="/autoform/">Find City & State Based off Zip</Link>
+  <Layout style={{ display: 'flex' }}>
+    <h2>Pardon the Dust...Currently Under Construction</h2>
+    <Icon style={{ maxWidth: '300px', marginBottom: '1.45rem', height: 'auto' }} />
   </Layout>
 )
 
